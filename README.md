@@ -18,3 +18,7 @@
 |          994 |         10 |           10 |
 
 <iframe src="/assets/game_durations.html" width=800 height=600 frameBorder=0></iframe>
+
+<iframe src="/assets/firstblood_by_position.html" width=800 height=600 frameBorder=0></iframe>
+
+<iframe src="/assets/wins_position.html" width=800 height=600 frameBorder=0></iframe>
