@@ -1,3 +1,6 @@
+<a class="site-title">Effects of Firstblood on Game Duration</a>
+<a class="page-link">About</a>
+
 ## Introduction
 For our project, we chose to analyze League of Legends data from 2022 gathered from the Oracle Elixir website. The dataset we chose has 149400 rows and 123 columns detailing numerous match histories and contains information such as the league the matches belong to, the game ID, how many gold each team ended up with, what champions they chose to play, and how many turrets each team was able to destroy among many other features of the game. After looking at the dataset, we were interested in answering...
 
@@ -6,6 +9,7 @@ For our project, we chose to analyze League of Legends data from 2022 gathered f
 We were curious about this question because there is a huge consensus in the League of Legends gaming community that the kills going to the support does not hold as much impact as the kills going to any other position on the team. Therefore, we wanted to explore whether or not the support getting the first kill on the team would cause the game to go on longer or not to either support or refute this theory and see whether or not public opinions were actually true or not despite there being such a huge agreement already in the community. To answer this question, we chose to look at the columns 'position', which contains information on what position everyone in the match is (bottom, top, middle, jungle, or support) as well as the columns 'gamelength', which is the duration of the games in seconds and also 'firstblood' that denotes whether or not a player got first blood or not, with 1 being True and 0 being False. In selecting these columns, we had enough information to answer our question and perform hypothesis testing because we could examine the relationship between position and game duration.
 
 ## Cleaning and EDA (Exploratory Data Analysis)
+### Data Cleaning
 To clean our data, we first isolated the columns that we needed: "position", "gamelength", and "firstblood". We then dropped all the rows that had NA in them so that they would not interfere with our analysis or calculations. In the dataset, there are rows that contain the summary statistics for the entire match, identified by the term "team" in the "position" column, so we decided to drop those rows as well since it did not contain the information we wanted, as we were looking for positions, game duration, and first blood for each person, not for the entire match as a whole. Afterwards, we converted the "firstblood" column from a float to a boolean column. This was because we thought it made sense for the column to be a boolean, as there was only 2 choices (True and False) of whether or not a player got first blood or not, and so we decided to convert it to a boolean instead of keeping it as a float column. Our cleaned Dataframe is below.
 
 | position   |   gamelength | firstblood   |
@@ -16,9 +20,13 @@ To clean our data, we first isolated the columns that we needed: "position", "ga
 | bot        |         1713 | True         |
 | sup        |         1713 | True         |
 
+### Univariate Analysis
+
 <iframe src="assets/game_durations.html" width=800 height=600 frameBorder=0></iframe>
 
 The majority of the games seem to last between 1400 to 2300 seconds. There seems to be slight skewness to the right due to games that last longer than 3100 seconds.
+
+### Bivariate Analysis
 
 <iframe src="assets/firstblood_by_position.html" width=800 height=600 frameBorder=0></iframe>
 
@@ -28,6 +36,8 @@ Jungle seems to obtain firstblood most often following support, while bottom, mi
 
 For each position, a majority of wins are without obtaining firstblood. Jungle seems to have the most wins after obtaining firstblood.
 
+### Interesting Aggregates
+
 |   gamelength |   position |   firstblood |
 |-------------:|-----------:|-------------:|
 |          921 |         10 |           10 |
@@ -36,7 +46,7 @@ For each position, a majority of wins are without obtaining firstblood. Jungle s
 |          953 |         10 |           10 |
 |          994 |         10 |           10 |
 
-EXPLAIN AGGREGATES
+We grouped our cleaned dataset by gamelength and aggregated the columns (position and firstblood) by count to view the distribution of positions and firstblood. We noticed that for each game length there's exactly 10 positons and 10 firstbloods obtained. This gives us a better idea of how the data is structured and how there should be 10 reports of positions and 10 reports of  whether for not firstblood were obtained by each player for each game.
 
 ## Assessment of Missingness
 ### NMAR Analysis
