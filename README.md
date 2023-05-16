@@ -1,5 +1,4 @@
-<a class="site-title">Effects of Firstblood on Game Duration</a>
-<a class="page-link">About</a>
+
 
 ## Introduction
 For our project, we chose to analyze League of Legends data from 2022 gathered from the Oracle Elixir website. The dataset we chose has 149400 rows and 123 columns detailing numerous match histories and contains information such as the league the matches belong to, the game ID, how many gold each team ended up with, what champions they chose to play, and how many turrets each team was able to destroy among many other features of the game. After looking at the dataset, we were interested in answering...
